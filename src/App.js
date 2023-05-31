@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 function App() {
   const [data, setData] = useState("");
   useEffect(() => {
-    fetch("http://localhost:4000/api", { method: "GET" })
+    fetch("/api", { method: "GET" })
       .then((res) => res.json())
       .then((res) => setData(res.server))
       .catch((error) => console.log(error));
