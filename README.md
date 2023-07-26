@@ -9,15 +9,30 @@ this is a sample full-stack application.
 - DB: postgresql
 - frontend react + vite
 
-## database
+## database schema
 
 ```mermaid
 erDiagram
-users {
-string name
-string email
-integer age
-}
+    tasks {
+        int id PK
+        string name
+        int category FK
+        text description
+        int status FK
+        datetime created_at
+        datetime updated_at
+    }
 
+    categories {
+        int id
+        string name
+    }
 
+    status {
+        int id
+        string name
+    }
+
+    tasks ||--|{ status: "status_id"
+    tasks ||--|{ categories: "category_id"
 ```
