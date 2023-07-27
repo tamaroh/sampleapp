@@ -8,25 +8,25 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("hello world");
 });
-app.get("/api/users", async (req, res) => {
-  const users = await db("users").select("*");
-  res.json(users);
+app.get("/api/tasks", async (req, res) => {
+  const tasks = await db("tasks").select("*");
+  res.json(tasks);
 });
-app.get("/api/users/:id", async (req, res) => {
-  const user = await db("users").where({ id: req.params.id });
-  res.json(user);
+app.get("/api/tasks/:id", async (req, res) => {
+  const task = await db("tasks").where({ id: req.params.id });
+  res.json(task);
 });
-app.post("/api/users", async (req, res) => {
-  const user = await db("users").insert(req.body);
-  res.json(user);
+app.post("/api/tasks", async (req, res) => {
+  const task = await db("tasks").insert(req.body);
+  res.json(task);
 });
-app.put("/api/users/:id", async (req, res) => {
-  const user = await db("users").where({ id: req.params.id }).update(req.body);
-  res.json(user);
+app.put("/api/tasks/:id", async (req, res) => {
+  const task = await db("tasks").where({ id: req.params.id }).update(req.body);
+  res.json(task);
 });
-app.delete("/api/users/:id", async (req, res) => {
-  const user = await db("users").where({ id: req.params.id }).del();
-  res.json(user);
+app.delete("/api/tasks/:id", async (req, res) => {
+  const task = await db("tasks").where({ id: req.params.id }).del();
+  res.json(task);
 });
 
-app.listen(4000, () => console.log("Server running on port 4000"));
+app.listen(4000, () => console.log("http://localhost:4000"));
