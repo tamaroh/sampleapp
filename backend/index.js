@@ -1,10 +1,13 @@
 const express = require("express");
 const environment = process.env.NODE_ENV || "development";
+const cors = require("cors");
 const app = express();
 const knex = require("knex");
 const config = require("./db/knexfile.js")[environment];
 const db = knex(config);
 app.use(express.json());
+app.use(cors());
+
 app.get("/", (req, res) => {
   res.send("hello world");
 });
