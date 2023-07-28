@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
   res.send("hello world");
 });
 app.get("/api/tasks", async (req, res) => {
-  const tasks = await db("tasks").select("*");
+  const tasks = await db("tasks").select();
   res.json(tasks);
 });
 app.get("/api/tasks/:id", async (req, res) => {
